@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.template.HelloController">
+
+   <children>
+      <VBox alignment="CENTER" spacing="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+
+         <!-- Title -->
+         <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Simple Stock Project" />
+
+         <!-- 3 ListViews in one row -->
+         <HBox alignment="CENTER" spacing="40">
+            <VBox alignment="CENTER" spacing="5">
+               <Label text="Names" />
+               <ListView fx:id="namesList" onMouseClicked="#handleNameClick" prefHeight="200" prefWidth="200" />
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5">
+               <Label text="Stocks" />
+               <ListView fx:id="stocksList" onMouseClicked="#handleStockClick" prefHeight="200" prefWidth="200" />
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5">
+               <Label text="My Stocks" />
+               <ListView fx:id="ownedList" onMouseClicked="#handleOwnedClick" prefHeight="200" prefWidth="200" />
+            </VBox>
+         </HBox>
+
+         <!-- Buy/Sell Section -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="Shares:" />
+            <TextField fx:id="sharesField" prefWidth="100" promptText="Enter number" />
+            <Button fx:id="buyButton" onAction="#handleBuy" prefWidth="80" text="Buy" />
+            <Button fx:id="sellButton" onAction="#handleSell" prefWidth="80" text="Sell" />
+         </HBox>
+
+         <!-- Add Person Section -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="First Name:" />
+            <TextField fx:id="firstNameField" prefWidth="150" promptText="Enter first name" />
+
+            <Label text="Last Name:" />
+            <TextField fx:id="lastNameField" prefWidth="150" promptText="Enter last name" />
+
+            <Button fx:id="addPersonButton" onAction="#handleAddPerson" text="Add Person" />
+         </HBox>
+
+         <!-- Cash Deposit for Selected Person -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="Cash Deposit:" />
+            <TextField fx:id="depositField" prefWidth="150" text="0" />
+            <Button fx:id="depositButton" onAction="#handleDeposit" text="Deposit" />
+         </HBox>
+
+         <!-- Add Stock Section -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="Stock Name:" />
+            <TextField fx:id="stockNameField" prefWidth="150" promptText="Enter stock name" />
+            <Button fx:id="addStockButton" onAction="#handleAddStock" text="Add Stock" />
+         </HBox>
+
+         <!-- Original elements at bottom -->
+         <HBox alignment="CENTER" spacing="10">
+            <TextField fx:id="txtInput" prefWidth="150" promptText="Enter something..." />
+            <Button fx:id="btnClick" onAction="#handleClick" text="click me" textFill="#e81313" />
+            <Label fx:id="lblDisplay" text="Label" />
+         </HBox>
+
+      </VBox>
+   </children>
+</AnchorPane>

@@ -15,7 +15,9 @@ public class HelloController {
     public ListView ownedList,stocksList,namesList;
     public TextField firstNameField;
     public TextField depositField;
-
+    public Label stockdetails;
+    private Person chosenPerson;
+    private Stock chosenStock;
     private Manager Manager =new Manager();
 
 
@@ -31,9 +33,41 @@ public class HelloController {
 
     public void handleNameClick(MouseEvent mouseEvent) {
 
+        chosenPerson = Manager.getPeople().get(namesList.getSelectionModel().getSelectedIndex());
+//        lblDisplay.setText(chosenPerson.getPersonName()+" | "+lblDisplay.getText());
+        System.out.println(chosenPerson.getPersonName());
+        ownedList.getItems().clear();
+        for (int i = 0; i <chosenPerson.getMyStocks().size(); i++){
+            ownedList.getItems().add(chosenPerson.getMyStocks().get(i).getStock().getStockname() + " Number of stocks owned: "+chosenPerson.getMyStocks().get(i).getSharesOwned());
+
+        }
+        lblDisplay.setText(String.valueOf(chosenPerson.getCash()));
+
+
     }
 
     public void handleStockClick(MouseEvent mouseEvent) {
+
+        int selectedIndex= stocksList.getSelectionModel().getSelectedIndex();
+//        lblDisplay.setText(Manager.getStocksAvaliable().get(selectedIndex).getStockname() +":" + Manager.getStocksAvaliable().get(selectedIndex).getPrice());
+        chosenStock = Manager.getStocksAvaliable().get(selectedIndex);
+        lblDisplay.setText(chosenStock.getStockname() + ": price = " + chosenStock.getPrice());
+
+//        String selectedtext = stocksList.getSelectionModel().getSelectedItem().toString();
+//        System.out.println(selectedtext);
+//        int found = -1;
+//        for (int i = 0; i <Manager.getStocksAvaliable().size(); i++){
+//            if (Manager.getStocksAvaliable().get(i).getStockname().equals(selectedtext)){
+//                found = i;
+//                break;
+//            }
+//        }
+//        if (found == -1){
+//            lblDisplay.setText("no stock found");
+//        }else {
+//            lblDisplay.setText(Manager.getStocksAvaliable().get(found).getStockname() +":" + Manager.getStocksAvaliable().get(i).getPrice());
+//
+//        }
 
 
     }
@@ -42,6 +76,9 @@ public class HelloController {
     }
 
     public void handleBuy(ActionEvent actionEvent) {
+
+
+        lblDisplay.setText(Manager.buyStock( chosenPerson,chosenStock,Integer.parseInt( sharesField.getText())));
 
 
     }
